@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>ELM</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Elm</h1>
+          <h3>A functional language for the web</h3>
+          <small>Joel Chelliah & Henrik Wingerei</small>
+        </section>
+
+        <section>
+          <h1>What is Elm?</h1>
+        </section>
+
+        <section>
+          <blockquote>
+            <p>Elm is a <span class="highlight">functional language</span> that <span class="highlight">compiles to HTML, CSS, and JavaScript</span>.</p>
+            <p>Designed for <span class="highlight">functional reactive programming</span>, Elm makes it easy to create <span class="highlight">highly interactive applications</span>.</p>
+          </blockquote>
+        </section>
+
+        <section>
+          <ul>
+            <li>Written by Evan Czaplicki</li>
+            <li>Presented in his thesis <i>Elm: Concurrent FRP for Functional GUI</i> from 2012</li>
+            <li>Designed because conventional GUI-programming on the web can be made easier.</li>
+            <li>Traditional Languages like HTML, CSS and JavaScript is not suited for responsive GUI-programming</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>What about Haskell?</h1>
+        </section>
+
+        <section>
+          <ul>
+            <li>Elm is written in Haskell</li>
+            <li>Elm's syntax resembles Haskell's</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Functional Reactive Programming</h1>
+        </section>
+
+        <section>
+          <h1>First...</h1>
+        </section>
+
+        <section>
+          <h1>Reactive Programming</h1>
+        </section>        
+
+        <section>
+          <ul>
+            <p>Declarative approach to programming</p>
+            <p>Think about a <i>spreadsheet</i></p>
+          </ul>
+          <pre>
+            <code data-trim>
+              a = b + c
+            </code>
+          </pre>
+          <p><i>a</i> will automatically change if <i>b</i> or <i>c</i> change</p>
+        </section>
+
+        <!-- <section> -->
+          <!-- Kort om historien til FRP -->
+          <!-- Utfordringer med FRP (behandler ett og ett event) -->
+        <!-- </section>  -->
+
+        <section>
+          <h1>Functional Reactive Programming</h1>
+        </section>
+
+        <section>
+          <p>Reactive programming with functional building blocks</p>
+          <p>Works very well for interactive GUI-programming with events from keyboard, mouse etc.</p>
+          <p>Specify <i><span class="highlight">what</span></i> is displayed, instead of <i><span class="highlight">how</span></i> the computer should do it.</p>
+        </section>
+
+        <section>
+          <h1>FRP in Elm</h1>
+        </section>
+
+        <section>
+          <p>Built around the idea of time-varying values, called signals in Elm.</p>
+          <p>Some signals are:</p>
+          <pre>
+            <code>
+              Mouse.signal
+              Mouse.click
+              Window.width
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h1>Concurrent FRP</h1>
+        </section>
+
+        <section>
+          <p>Traditional FRP maintains a strict order of events</p>
+          <p>If one events takes a long time to process, all of the subsequent events must wait</p>
+          <p>This could lead to unresponsive GUIs</p>
+        </section>
+
+        <section>
+          <p>Concurrent FRP allows the programmer to specify when a strict ordering of events is
+unnecessary, resulting in more responsive GUIs.</p>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        width: 1024,
+        height: 768,
+        // margin: 0,
+        controls: false,
+        progress: false,
+        history: true,
+        center: true,
+        keyboard: true,
+        transition: 'fade',
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
