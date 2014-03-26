@@ -83,15 +83,15 @@
 
         <section>
           <ul>
-            <p>Declarative approach to programming</p>
-            <p>Think about a <i>spreadsheet</i></p>
+            <li>Declarative approach to programming</li>
+            <li>Think about a <i>spreadsheet</i></li>
+            <li><i>a</i> will automatically change if <i>b</i> or <i>c</i> change</li>
           </ul>
           <pre>
             <code data-trim>
               a = b + c
             </code>
           </pre>
-          <p><i>a</i> will automatically change if <i>b</i> or <i>c</i> change</p>
         </section>
 
         <section>
@@ -112,8 +112,8 @@
           <p>Some signals are:</p>
           <pre>
             <code>
-              Mouse.signal
-              Mouse.click
+              Mouse.position
+              Mouse.isDown
               Window.width
             </code>
           </pre>
@@ -172,6 +172,62 @@ unnecessary, resulting in more responsive GUIs.</p>
           <img class="stretch" src="./img/prezi.png">
         </section>
 
+        <section>
+          <h1>Embedding Elm</h1>
+        </section>
+
+        <section>
+          <ul>
+            <li>Not realistic to just use Elm in one applicaiton</li>
+            <li>But what about creating a small Elm-widget and embedding it?</li>
+          </ul>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim>
+              elm --only-js Stamper.elm
+            </code>
+          </pre>
+          <pre>
+            <code data-trim>              
+// get an empty div
+var div = document.getElementById('stamper');
+
+// embed our Elm program in that div
+Elm.embed(Elm.Stamper, div);
+          </code>
+          </pre>
+        </section>
+
+        <section>
+          <h1>Ports in Elm</h1>
+        </section>
+
+        <section>
+          <ul>
+            <li>Ports is used to send information to and from an Elm program</li>
+            <li>Makes it possible to communicate with embedded Elm-widgets from traditional Javascript</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Summary</h1>
+        </section>
+
+        <section>
+          <ul>
+            <li>Elm is a functional language which compiles to HTML, CSS and Javascript</li>
+            <li>Designed for functional reactive programming</li>
+            <li>Easy to create highly interactive applications like games</li>
+            <li>Possible to embed Elm-widgets on any site</li>
+            <li>Still a young language</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Thank you</h1>
+        </section>
       </div>
 
     </div>
