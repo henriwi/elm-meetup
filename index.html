@@ -102,7 +102,7 @@
         </section>
 
         <section>
-          <p>Built around the idea of time-varying values, called signals in Elm.</p>
+          <p>Built around the idea of time-varying values, called signals</p>
           <p>&nbsp;</p>
           <p>Some signals are:</p>
           <pre>
@@ -123,21 +123,6 @@
             <li>No DOM manipulation</li>
           </ul>
         </section>
-
- <!--        <section>
-          <h1>Concurrent FRP</h1>
-        </section>
-
-        <section>
-          <p>Traditional FRP maintains a strict order of events</p>
-          <p>If one events takes a long time to process, all of the subsequent events must wait</p>
-          <p>This could lead to unresponsive GUIs</p>
-        </section>
-
-        <section>
-          <p>Concurrent FRP allows the programmer to specify when a strict ordering of events is
-unnecessary, resulting in more responsive GUIs.</p>
-        </section> -->
 
         <section>
           <h1>Demo</h1>
@@ -164,7 +149,16 @@ unnecessary, resulting in more responsive GUIs.</p>
         </section>
 
         <section>
-          <!-- Joel: Show forms, what's new in Elm 0.12 -->
+          <h1>Interactive UI Elements</h1>
+        </section>
+
+        <section>
+          <ul>
+            <li>UI elements in Elm 0.12</li>
+            <li>Makes it possible to create interactive fields (buttons, inputs etc.)</li>
+            <li><a href="http://elm-lang.org/edit/examples/Intermediate/Form.elm">Input form</a></li>
+            <li><a href="http://elm-lang.org/edit/examples/Intermediate/Calculator.elm">Calculator</a></li>
+          </ul>
         </section>
 
         <section>
@@ -185,16 +179,16 @@ unnecessary, resulting in more responsive GUIs.</p>
         <section>
           <pre>
             <code data-trim>
-              elm --only-js Stamper.elm
+              elm --only-js Snake.elm
             </code>
           </pre>
           <pre>
             <code data-trim>              
 // get an empty div
-var div = document.getElementById('stamper');
+var div = document.getElementById('snake');
 
 // embed our Elm program in that div
-Elm.embed(Elm.Stamper, div);
+Elm.embed(Elm.Snake, div);
           </code>
           </pre>
         </section>
@@ -221,6 +215,7 @@ Elm.embed(Elm.Stamper, div);
             <li>Easy to create highly interactive applications like games</li>
             <li>Possible to embed Elm-widgets on any site</li>
             <li>Still a young language</li>
+            <li>Interesting language to follow</li>
           </ul>
         </section>
 
@@ -230,9 +225,9 @@ Elm.embed(Elm.Stamper, div);
 
         <section>
           <ul>
-            <li>http://elm-lang.org</li>
-            <li>http://www.infoq.com/presentations/elm-reactive-programming</li>
-            <li>https://groups.google.com/forum/#!forum/elm-discuss</li>
+            <li class="highlight">http://elm-lang.org</li>
+            <li class="highlight">http://www.infoq.com/presentations/elm-reactive-programming</li>
+            <li class="highlight">https://groups.google.com/forum/#!forum/elm-discuss</li>
           </ul>
         </section>
 

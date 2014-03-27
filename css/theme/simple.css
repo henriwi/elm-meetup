@@ -168,3 +168,18 @@ body {
  .reveal pre code {
   padding: 20px;
  }
+
+ .reveal li {
+  font-size: 1.3em;
+  padding: 8px 0 8px 0;
+  line-height: 1.1em;
+ }
+
+ .reveal a:not(.image) {
+  color: #DFBA69;
+  text-decoration: underline;
+ }
+
+ .reveal a:not(.image):hover {
+  color: #DFBA69;
+ }
