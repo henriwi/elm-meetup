@@ -1,10 +1,10 @@
 -- Basics
+-- SHOW THIS ON YOUR COMPUTER
+-- SHOW GENERATED SOURCES
 
---
 main = asText "Hello Haskell Meetup!"
 
---
-main = asText ("Hello " ++ "Haskell " ++ "Meetup!")
+-- Show compiled versions of a Elm-program
 
 -- Lister
 --
@@ -24,7 +24,8 @@ main = asText [n1,n2]
 
 -- Pattern matching on records
 -- under30 will match any record having an age field
---
+-- THIS ONE
+
 henrik = {name="Wingerei", age=27}
 under30 {age} = age < 30
 main = asText (under30 henrik)
@@ -36,13 +37,15 @@ henrik2 = {henrik | age <- 28}
 main = asText henrik2
 
 -- Funksjoner
+hello : String -> String
 hello name = "Hello " ++ name ++ "!"
 main = asText [ hello "Joel", hello "Henrik" ]
 
 -- Records and functions together
 -- This pattern you will often see in Elm-games (Model and step functions)
 type Person = {age:Int}
-henrik = { age=27}
+henrik : Person
+henrik = {age=27}
 
 stepPerson : Person -> Person
 stepPerson person = { person | age <- person.age + 1}
@@ -71,11 +74,7 @@ main = collage 400 400  [move (50,50) (filled red (square 50))]
 
 main = collage 400 400  [square 50 |> filled red |> move (50, 50)]
 
--- Common to create helper functions
--- Collage take a list with elements
 --
-box color = filled color (square 40)
+-- Signals
 
-main = collage 400 400 
-      [box red |> move (50,50),
-       box blue |> move (100,100)]
+main = lift asText Mouse.position
