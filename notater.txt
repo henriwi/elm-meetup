@@ -1,0 +1,35 @@
+Intro
+ - Kort om oss selv
+
+What is Elm?
+	- Functional language
+	- Compiles to HTML, CSS, JS
+	- So called FRP
+	- Highly interactive applications
+
+What is Elm?
+	- Evan worked at Google before
+	- Created Elm as part of his thesis at Harvard
+	- Web has evolved a lot since 94/95.
+	- Languages have not developed a lot
+
+Haskell?
+	- We're at a Haskell Meetup
+	- Installed via Cabal (Haskell package manager)
+	- Elm's syntax resembles Haskell's
+	- A few differences (: vs ::)
+	- Elm is also inspired by other languages like F#
+
+FRP
+	- Declarative approach to programming
+	- A spreadsheet is a good analogy
+
+Signals
+	- time-varying values: A value that changes over time
+	- What about the spreadsheet analogy
+
+Signals
+	- This shows to work very well for interactive UI-programming
+	- Most UI-frameworks are imperative
+
+
