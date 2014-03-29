@@ -78,16 +78,15 @@ tupVel (ax,ay) (bx,by) = let s1 = bx - ax
 {-- Part 4: Display the game --------------}
 
 display : (Int,Int) -> Game -> Element
-display (w,h) g = let bPos = g.ball.pos
-                      cPos = g.cat.pos
+display (w,h) g = let catImage c = if (fst c.vel) < 0 then "/img/catleft.gif" else "/img/catright.gif"
                       drawBall = circle 15 |> filled darkRed
-                                           |> move bPos
-                      drawCat = square 40  |> filled black
-                                           |> move cPos
-                                           |> rotate ((fst cPos)/10)
-                      drawKitten k = square 10  |> filled blue
+                                           |> move g.ball.pos
+                      drawCat = catImage g.cat |> image 350 350  
+                                               |> toForm
+                                               |> move g.cat.pos
+                      drawKitten k = catImage k |> image 150 150  
+                                                |> toForm
                                                 |> move k.pos
-                                                |> rotate ((fst k.pos)/5)
                                                     
                   in container w h middle <| color gray
                                           <| collage width height (drawBall::drawCat::(map drawKitten g.kittens))
