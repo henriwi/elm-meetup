@@ -57,6 +57,12 @@ body {
   color: #DFBA69;
 }
 
+.reveal .agenda {
+  font-size: 2.5em;
+  color: #DFBA69;
+  padding-bottom: 60px;
+}
+
 /*********************************************
  * LINKS
  *********************************************/
