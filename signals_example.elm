@@ -4,11 +4,39 @@ import Window
 
 
 type Input = { mousePos:(Int,Int), mouseClicks:Int, window:(Int,Int), shift:Bool }
+
 input = sampleOn (fps 20) (Input <~ Mouse.position
                                   ~ (count Mouse.clicks)
                                   ~ Window.dimensions
                                   ~ Keyboard.shift)
-                                  
+  
+
+
+main = asText <~ input
+--main = display <~ input
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 display input = let drawClicks = show input.mouseClicks ++ " clicks" |> formText (Text.color blue)
                                                                      |> move (10,0)
@@ -22,9 +50,4 @@ display input = let drawClicks = show input.mouseClicks ++ " clicks" |> formText
                 in collage 400 400 [drawClicks, drawMouseP, drawShift]
 
 
-formText f = toForm . text . f . (Text.height 30) . toText
-
-
-
---main = asText <~ input
-main = display <~ input
+formText f = toForm . leftAligned . f . (Text.height 30) . toText

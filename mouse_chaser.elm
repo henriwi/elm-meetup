@@ -80,8 +80,8 @@ tupVel (ax,ay) (bx,by) = let s1 = bx - ax
 
 display : (Int,Int) -> Game -> Element
 display (w,h) g = let catImage c = if (fst c.vel) < 0 then "/img/catl.gif" else "/img/catr.gif"
-                      drawBall = circle 25 |> filled darkBlue
-                                           |> move g.ball.pos
+                      drawBall =  image 75 75 "/img/ball.png" |> toForm
+                                                                |> move g.ball.pos
                       drawCat = catImage g.cat |> image 150 150  
                                                |> toForm
                                                |> move g.cat.pos
@@ -94,9 +94,11 @@ display (w,h) g = let catImage c = if (fst c.vel) < 0 then "/img/catl.gif" else 
                       drawMeow = meowTxt |> boldTxt (Text.height 40)
                                          |> toForm
                                          |> move (fst g.cat.pos - 15 * (fst g.cat.vel), snd g.cat.pos + 50.0)
+                      drawFence = tiledImage 800 200 "/img/fence.png" |> toForm
+                                                                      |> move (-25, -200)
                                                     
                   in container w h middle <| color gray
-                                          <| collage width height (drawBackground::(map drawKitten g.kittens) ++ [drawBall, drawCat, drawMeow])
+                                          <| collage width height (drawBackground::(map drawKitten g.kittens) ++ [drawBall, drawCat, drawMeow, drawFence])
 
 boldTxt   f = leftAligned . f . bold . Text.color darkRed . toText
 
