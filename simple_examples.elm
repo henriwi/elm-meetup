@@ -5,6 +5,14 @@
 main = asText "Hello Haskell Meetup!"
 
 -- Show compiled versions of a Elm-program
+-- GO ON elm-lang.org
+
+main = [markdown|
+
+# Hello Haskell
+## Meetup!
+
+|]
 
 -- Lister
 --
@@ -25,32 +33,42 @@ main = asText [n1,n2]
 -- Pattern matching on records
 -- under30 will match any record having an age field
 -- THIS ONE
+type Person = {name:String, age:Int}
 
+henrik : Person
 henrik = {name="Wingerei", age=27}
-under30 {age} = age < 30
+
+under30 : Person -> Bool
+under30 p = p.age < 30
+
 main = asText (under30 henrik)
 
 -- Updating records
---
-henrik = {name="Wingerei", age=27}
-henrik2 = {henrik | age <- 28}
-main = asText henrik2
+-- Take henrik and update these particular fields
 
--- Funksjoner
-hello : String -> String
-hello name = "Hello " ++ name ++ "!"
-main = asText [ hello "Joel", hello "Henrik" ]
-
--- Records and functions together
--- This pattern you will often see in Elm-games (Model and step functions)
-type Person = {age:Int}
+type Person = {name:String, age:Int}
 henrik : Person
-henrik = {age=27}
+henrik = {name="Wingerei", age=27}
 
-stepPerson : Person -> Person
-stepPerson person = { person | age <- person.age + 1}
+setAge : Person -> Int -> Person
+setAge henrik a = {henrik | age <- a}
 
-main = henrik |> stepPerson |> asText
+main = asText (setAge henrik 28)
+
+-- setAge takes two parameters => implicit currying
+type Person = {name:String, age:Int}
+henrik : Person
+henrik = {name="Wingerei", age=27}
+
+setAge : Person -> Int -> Person
+setAge henrik a = {henrik | age <- a}
+
+setAge2 = setAge henrik
+
+main = asText (setAge2 30)
+--OR
+main = asText (setAge henrik (29))
+
 
 -- Graphics
 
@@ -58,23 +76,54 @@ main = henrik |> stepPerson |> asText
 -- text, image, video :: String -> Element
 
 --
-main = image 200 200 "/img/yogi.jpg"
+main = image 200 200 "/yogi.jpg"
+
+-- You can also stack these elements
+yogi = image 200 200 "/yogi.jpg"
+book = image 200 200 "/book.jpg"
+main = flow down [yogi, book]
 
 --  In Elm, irregular shapes that cannot be stacked easily are called forms. 
 --  These visual forms have shape, color, and many more properties and can be displayed any which way on a collage.
 
---
 main = collage 400 400 [square 50 |> filled red]
 
--- |> means function application (borrowed from F#)
+-- |> means application (borrowed from F#)
+-- f x == x |> f
+-- a way of saving parenthesis
 -- More readable than (these to examples are the same)
 
---
-main = collage 400 400  [move (50,50) (filled red (square 50))]
+main = collage 400 400 [move (50,50) (filled red (square 50))]
 
-main = collage 400 400  [square 50 |> filled red |> move (50, 50)]
+main = collage 400 400 [square 50 |> filled red |> move (50, 50)]
 
---
--- Signals
+-- "So fare we've seen functional static programming, what about the reactive part?"
+-- Mouse.position is a Signal (Int, Int) = a pair of integeres that changes over time
 
+--  lift = take some function, and always apply it to the current value of the signal
+--  Doing a transformation on the latest value
+
+import Mouse
 main = lift asText Mouse.position
+
+-- Combining Signals and Graphics
+
+import Keyboard
+
+yogi = image 200 200 "/yogi.jpg"
+
+shapes {x,y} = collage 400 400 
+                 [square 100 |> filled red |> move (toFloat x*100, toFloat y*100)]
+
+main = lift shapes Keyboard.arrows
+
+-- Move yogi instead
+
+import Keyboard
+
+yogi = image 200 200 "/yogi.jpg"
+
+shapes {x,y} = collage 400 400 
+                 [toForm yogi |> move (toFloat x*100, toFloat y*100)]
+
+main = lift shapes Keyboard.arrows
