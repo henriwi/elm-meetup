@@ -22,6 +22,9 @@
       document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
     </script>
 
+    <script src="/Users/henriwi/.cabal/share/Elm-0.12/elm-runtime.js"></script>
+    <script src="/Users/henriwi/dev/elm-playground/build/clock.js"></script>
+
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
@@ -204,6 +207,14 @@ var div = document.getElementById('snake');
 Elm.embed(Elm.Snake, div);
           </code>
           </pre>
+        </section>
+
+        <section>
+          <div id="game_elm" style="width: 310px; height: 310px; margin: 0 auto;"></div>
+          <script>
+            var div = document.getElementById('game_elm');
+            Elm.embed(Elm.Main, div);
+          </script>
         </section>
 
         <section>
