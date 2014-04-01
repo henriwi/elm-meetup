@@ -30,9 +30,10 @@ n1 = henrik.name
 n2 = .name henrik
 main = asText [n1,n2]
 
+-- Types are inferred in Elm, so you don't have to define them
+-- But you can also define them on records and functions
 -- Pattern matching on records
 -- under30 will match any record having an age field
--- THIS ONE
 type Person = {name:String, age:Int}
 
 henrik : Person
@@ -56,6 +57,9 @@ setAge henrik a = {henrik | age <- a}
 main = asText (setAge henrik 28)
 
 -- setAge takes two parameters => implicit currying
+-- currying:  is the technique of transforming a function that takes multiple arguments 
+-- in such a way that it can be called as a chain of functions, each with a single argument
+
 type Person = {name:String, age:Int}
 henrik : Person
 henrik = {name="Wingerei", age=27}
